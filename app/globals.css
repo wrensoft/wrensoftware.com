@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tech-bg: #0f1419;
+  --tech-surface: #1a1f29;
+  --tech-border: #2d3748;
+  --tech-accent: #4299e1;
+  --tech-secondary: #63b3ed;
+  --tech-success: #48bb78;
+  --tech-text: #e2e8f0;
+  --tech-text-dim: #a0aec0;
+  --tech-text-muted: #718096;
+  --tech-hover: #2d3748;
+}
+
+body {
+  background: var(--tech-bg);
+  color: var(--tech-text);
+  font-family: 'Inter', sans-serif;
+}
+
+.tech-card {
+  border: 1px solid var(--tech-border);
+  background: var(--tech-surface);
+  transition: all 0.2s ease;
+}
+
+.tech-card:hover {
+  border-color: var(--tech-accent);
+  background: var(--tech-hover);
+}
+
+.tech-gradient {
+  background: linear-gradient(135deg, var(--tech-accent) 0%, var(--tech-secondary) 100%);
+}
+
+.tech-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--tech-success);
+}
+
+.tech-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--tech-border), transparent);
+}
+
+.tech-subtle-grid {
+  background-image:
+    linear-gradient(rgba(66, 153, 225, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(66, 153, 225, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
