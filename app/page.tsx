@@ -1,14 +1,50 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { GiHorseHead } from "react-icons/gi";
 import { HiTrendingUp } from "react-icons/hi";
 
 export default function Home() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   return (
-    <div className="min-h-screen tech-subtle-grid">
+    <div className="min-h-screen tech-subtle-grid relative">
+      {/* Thick grid lines around cursor */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(66, 153, 225, 0.15) 2px, transparent 2px),
+            linear-gradient(90deg, rgba(66, 153, 225, 0.15) 2px, transparent 2px)
+          `,
+          backgroundSize: '40px 40px',
+          mask: `radial-gradient(circle 120px at ${mousePos.x}px ${mousePos.y}px,
+            black 0%,
+            black 20%,
+            rgba(0,0,0,0.8) 40%,
+            rgba(0,0,0,0.4) 60%,
+            rgba(0,0,0,0.1) 80%,
+            transparent 100%)`,
+          WebkitMask: `radial-gradient(circle 120px at ${mousePos.x}px ${mousePos.y}px,
+            black 0%,
+            black 20%,
+            rgba(0,0,0,0.8) 40%,
+            rgba(0,0,0,0.4) 60%,
+            rgba(0,0,0,0.1) 80%,
+            transparent 100%)`
+        }}
+      />
       {/* Header */}
-      <header className="border-b border-[var(--tech-border)] bg-[var(--tech-surface)]">
+      <header className="relative z-10 border-b border-[var(--tech-border)] bg-[var(--tech-surface)]">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <div className="tech-status-dot"></div>
@@ -50,7 +86,7 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main className="max-w-6xl mx-auto px-6 py-16">
+      <main className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         
         {/* Hero section */}
         <section className="text-center mb-20">
@@ -130,7 +166,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[var(--tech-border)] bg-[var(--tech-surface)] mt-20">
+      <footer className="relative z-10 border-t border-[var(--tech-border)] bg-[var(--tech-surface)] mt-20">
         <div className="max-w-6xl mx-auto px-6 py-6 text-center">
           <div className="font-mono text-sm text-[var(--tech-text-muted)]">
             © {new Date().getFullYear()} Wren Software. All rights reserved.
