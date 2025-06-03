@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen tech-subtle-grid relative">
+    <div className="min-h-screen tech-subtle-grid relative flex flex-col">
       {/* Thick grid lines around cursor */}
       <div
         className="fixed inset-0 pointer-events-none z-0"
@@ -86,10 +86,10 @@ export default function Home() {
       </header>
 
       {/* Main content */}
-      <main className="relative z-10 max-w-6xl mx-auto px-6 py-16">
+      <main className="relative z-10 flex-grow max-w-6xl mx-auto px-6 py-8 pb-24">
         
         {/* Hero section */}
-        <section className="text-center mb-20">
+        <section className="text-center mb-12">
           <h1 className="text-5xl font-bold mb-6 bg-gradient-to-r from-[var(--tech-accent)] to-[var(--tech-secondary)] bg-clip-text text-transparent">
             Wren Software
           </h1>
@@ -100,7 +100,7 @@ export default function Home() {
         </section>
 
         {/* Portfolio section */}
-        <section className="mb-20">
+        <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-8 text-center text-[var(--tech-text)]">Our Portfolio</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
@@ -166,8 +166,8 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-[var(--tech-border)] bg-[var(--tech-surface)] mt-20">
-        <div className="max-w-6xl mx-auto px-6 py-6 text-center">
+      <footer className="fixed bottom-0 left-0 right-0 z-10 border-t border-[var(--tech-border)] bg-[var(--tech-surface)]">
+        <div className="max-w-6xl mx-auto px-6 py-3 text-center">
           <div className="font-mono text-sm text-[var(--tech-text-muted)]">
             © {new Date().getFullYear()} Wren Software. All rights reserved.
           </div>
